@@ -1,0 +1,86 @@
+PostgreSQL bu relatsion va norelatsion(JSON) so'rovlarni qo'llab quvvatlaydigan 
+bepul ochiq manbali ma'lumotlar bazasi
+PostgreSQL bu dinamik veb saytlar va ilovalar uchun ma'lumotlar bazasi
+PostgreSQL eng muhim dasturlash tillarini qo'llab quvvatlaydi
+misol:
+python
+java
+c++
+node.JS
+bor
+ruby
+PostgreSQL Kaliforniya universitetining Berkli kompyuter fanlari bo'limida ixtiro qilingan.
+U bir nechta ma'lumotlar turlarini qo'llab-quvvatlash uchun zarur bo'lgan minimal xususiyatlarga ega ma'lumotlar bazasi tizimini yaratish maqsadida 1986 yilda loyiha sifatida boshlangan.
+
+
+PostgreSQL da jadval yaratish:
+
+CREATE TABLE car(
+brand VARCHAR(255),
+model VARCHAR(255),
+year INT
+)
+Yuqoridagi kodlar quyidagicha tushuntiriladi
+CREATE TABLE - ya'ni jadval yaratish kodi
+
+car - bu jadval nomi
+
+brand va model biz satr qiymatlarini kutmoqdamiz va satr qiymatlari VARCHAR kalit so'z bilan belgilanadi.
+Shuningdek, biz satr maydonida ruxsat etilgan belgilar sonini ko'rsatishimiz kerak va biz aniq bilmaganimiz uchun uni 255 ga o'rnatdik ya'ni 255 harfdan iborat.
+
+Barcha Natijalarni tekshirish uchun
+SELECT * FROM cars;
+
+
+INSERT INTO - PostgreSQL-da jadvalga ma'lumotlarni kiritish uchun biz ushbu bayonotdan foydalanamiz
+INSERT INTO cars (brand, model, year)
+VALUES ('Ford', 'Mustang', 1964);
+
+VALUES - bu INSERT INTO ichiga kiritgan kalitlarimiz uchun qiymat yozamiz
+Biz INSERT INTO ichiga bir nechta values larni joylashimiz mumkin
+INSERT INTO cars (brand, model, year)
+VALUES
+  ('Volvo', 'p1800', 1968),
+  ('BMW', 'M1', 1978),
+  ('Toyota', 'Celica', 1975);
+
+SELECT - Ma'lumotlar bazasidan ma'lumotlarni olish uchun foydalanamiz
+SELECT brand, year FROM cars;
+Yuqorida biz ma'lumotlar bazasidan cars ning brand va year sini chiqardik
+
+ALTER TABLE - Mavjud jadvalga ustun qo'shish uchun foydalanamiz
+
+ALTER TABLE - bayonot mavjud jadvalga ustunlarni qo'shish, o'chirish yoki o'zgartirish uchun ishlatiladi.
+
+cars jadvalimizga color nomli ustun qo'shmoqchimiz
+ALTER TABLE cars
+ADD color VARCHAR(255);
+
+UPDATE - bayonot jadvaldagi mavjud yozuvlardagi qiymat(lar)ni o'zgartirish uchun ishlatiladi.
+UPDATE cars
+SET color = 'red'
+WHERE brand = 'Volvo';
+
+Agar WHERE bayonotidan foydalanmasak u hamma yozuvlarni o'zgartirib yuboradi
+UPDATE cars
+SET color = 'red';
+
+Bir nechta ustunlarni yangilash
+UPDATE cars
+SET color = 'white', year = 1970
+WHERE brand = 'Toyota';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

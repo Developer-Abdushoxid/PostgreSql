@@ -70,9 +70,82 @@ UPDATE cars
 SET color = 'white', year = 1970
 WHERE brand = 'Toyota';
 
+jadvaldagi year ustuninig ma'lumot turi INT ni VARCHAR(4) ga o'zgartiramiz
+ALTER TABLE cars
+ALTER COLUMN year TYPE VARCHAR(4);
 
+Agar ustun qiymatga ega bo'lsa, ba'zi ma'lumotlar turlarini aylantirib bo'lmaydi. Masalan, raqamlar har doim matnga aylantirilishi mumkin, lekin matn har doim ham raqamlarga aylantirilmaydi.
 
+jadvaldagi bir xil ma'lumotning ichidagi qiymatini o'zgartiramiz
+ALTER TABLE cars
+ALTER COLUMN color TYPE VARCHAR(30);
+bunda VARCHAR(255) ni VARCHAR(30) ga o'zgartirdik
 
+Jadval ichidagi ustunni olib tashlash uchun DROP COLUMN dan foydalanamiz
+ALTER TABLE cars
+DROP COLUMN color;
+bunda biz cars jadvalidagi color ustunini olib tashladik
+
+DELETE bayonoti jadvaldagi yozuvlarni o'chirib tashlashda foydaniladi
+Ammo extiyot bo'lish kerak WHERE bandini o'tkazib yubormaslik kerak 
+Agar WHERE bandi o'tkazib yuborilsa jadvaldagi barcha yozuvlar o'chib ketadi
+DELETE FROM cars
+WHERE brand = 'Volvo';
+
+TRUNCATE TABLE - bu bayonot ham barcha ma'lumotlarni o'chirib tashlaydi
+TRUNCATE TABLE cars;
+
+DROP TABLE - bayonot mavjud jadvalni ma'lumotlar bazasidan o'chirib tashlaydi
+DROP TABLE cars;
+
+Biz bandda turli operatorlar WHERE bilan ishlashimiz mumkin:
+
+=	ga teng
+<	Dan kichik; .. dan kamroq
+>	dan kattaroq
+<=	dan kichik yoki teng
+>=	dan katta yoki teng
+<>	ga teng emas
+!=	ga teng emas
+LIKE	Qiymat naqshga mos kelishini tekshiring (katta-kichik harf sezgir)
+ILIKE	Qiymat naqshga mos kelishini tekshiring (katta harflar sezilmaydi)
+AND	Mantiqiy VA
+OR	Mantiqiy OR
+IN	Qiymat qiymatlar oralig'ida ekanligini tekshiring
+BETWEEN	Qiymat qiymatlar oralig'ida ekanligini tekshiring
+IS NULL	Qiymat NULL ekanligini tekshiring
+NOT	Salbiy natija beradi, masalan NOT LIKE, NOT IN, NOT BETWEEN
+
+MISOL:
+Yil 1975 yildan kamroq bo'lgan barcha yozuvlarni qaytaring:
+SELECT * FROM cars
+WHERE year < 1975;
+
+Brend "Volvo" bo'lgan barcha yozuvlarni qaytaring:
+SELECT * FROM cars
+WHERE brand = 'Volvo';
+
+Yil 1975 dan katta bo'lgan barcha yozuvlarni qaytaring:
+SELECT * FROM cars
+WHERE year > 1975;
+
+Yil 1975 dan kichik yoki unga teng bo'lgan barcha yozuvlarni qaytaring:
+SELECT * FROM cars
+WHERE year <= 1975;
+
+Brend "Volvo" EMAS bo'lgan barcha yozuvlarni qaytaring:
+SELECT * FROM cars
+WHERE brand != 'Volvo';
+
+Ma'lumotlar bazasidan ma'lumotlarni olish uchun biz SELECT bayonotidan foydalanamiz
+
+Ustun nomlarini belgilash orqali biz qaysi ustunlarni tanlashni tanlashimiz mumkin:
+Misol
+SELECT customer_name, country FROM customers;
+
+Barcha ustunlarni *tanlash uchun ustun nomlari o‘rniga a ni belgilang:
+Misol
+SELECT * FROM customers;
 
 
 

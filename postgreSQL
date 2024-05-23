@@ -143,12 +143,13 @@ Ustun nomlarini belgilash orqali biz qaysi ustunlarni tanlashni tanlashimiz mumk
 Misol
 SELECT customer_name, country FROM customers;
 
-Barcha ustunlarni *tanlash uchun ustun nomlari o‘rniga a ni belgilang:
+Barcha ustunlarni *tanlash uchun ustun nomlari o'rniga a ni belgilang:
 Misol
 SELECT * FROM customers;
 
-
-
+Bayonot SELECT DISTINCT faqat aniq (turli) qiymatlarni qaytarish uchun ishlatiladi.
+Jadval ichida ustun ko'pincha takroriy qiymatlarni o'z ichiga oladi va ba'zida siz faqat turli (aniq) qiymatlarni ro'yxatga olishni xohlaysiz.
+SELECT DISTINCT country FROM customers;
 
 
 
